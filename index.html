@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriTrack - Daily Calorie Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
+
+    <header class="relative bg-cover bg-center h-64 flex items-center justify-center text-white" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-wide"><i class="fa-solid fa-heart-pulse mr-2 text-green-400"></i>NutriTrack</h1>
+            <p class="text-lg md:text-xl text-gray-200">Track your meals, manage your goals, and stay healthy.</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto p-4 md:p-8 flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="md:col-span-1 space-y-6">
+                
+                <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fa-solid fa-plus-circle text-green-500 mr-2"></i>Log Food</h2>
+                    <form id="food-form" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">Food Name</label>
+                            <input type="text" id="food-name" required placeholder="e.g., Avocado Toast" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-1">Calories (kcal)</label>
+                            <input type="number" id="food-calories" required min="1" placeholder="e.g., 250" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+                        </div>
+                        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 rounded-lg transition duration-200 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-square-plus"></i> Add Item
+                        </button>
+                    </form>
+                </section>
+
+                <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-lg font-bold text-gray-800 mb-2 flex items-center"><i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>Suggestions</h2>
+                    <p class="text-xs text-gray-500 mb-3">Simulated placeholder data via Fetch API</p>
+                    <button id="fetch-suggestions-btn" class="w-full bg-blue-50 hover:bg-blue-100 text-blue-600 text-sm font-semibold py-2 px-4 rounded-lg transition mb-3 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Load Ideas
+                    </button>
+                    <div id="suggestions-container" class="space-y-2 hidden max-h-40 overflow-y-auto pr-1 text-sm">
+                        </div>
+                </section>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
+                
+                <section class="bg-gradient-to-br from-green-500 to-emerald-600 text-white p-6 rounded-2xl shadow-md flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <p class="text-green-100 font-medium tracking-wide uppercase text-sm">Total Consumption</p>
+                        <h2 class="text-4xl font-extrabold mt-1"><span id="total-calories">0</span> <span class="text-xl font-normal text-green-100">kcal</span></h2>
+                    </div>
+                    <button id="reset-btn" class="bg-white/20 hover:bg-white/30 text-white font-medium py-2 px-4 rounded-xl border border-white/20 transition duration-200 flex items-center gap-2 self-start sm:self-center">
+                        <i class="fa-solid fa-rotate-right"></i> Reset Day
+                    </button>
+                </section>
+
+                <section class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fa-solid fa-utensils text-orange-500 mr-2"></i>Today's Meals</h2>
+                    <div class="overflow-hidden">
+                        <ul id="food-list" class="divide-y divide-gray-100">
+                            </ul>
+                        <div id="empty-state" class="text-center py-12 text-gray-400">
+                            <i class="fa-solid fa-basket-shopping text-4xl mb-3 block"></i>
+                            <p>No food logged for today yet.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-center py-4 text-sm mt-12 border-t border-gray-700">
+        <p>&copy; 2026 NutriTrack. Built for Javascript Web Development Assessment.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
